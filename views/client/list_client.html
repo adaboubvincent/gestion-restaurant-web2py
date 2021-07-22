@@ -1,0 +1,45 @@
+{{extend 'layout/gestion.html'}}
+{{block content}}
+
+<div class="container">
+
+<br/>
+<h1 class="inline-block margin-right-100">Liste des client enrégistrés</h1> 
+<h1 class="inline-block bold-font-a"><a class="btn" href="{{=URL(c='client', f='ajout_client')}}">Ajouter des client</a></h1>
+<br/><br/>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">nom</th>
+            <th scope="col">prenom</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for _film in rows:}}
+        
+        <tr>
+            <th scope="row">{{=_film.id}}</th>
+            <th>{{=_film.nom}}</th>
+            <th>{{=_film.prenom}}</th>
+            <td>
+                <a class="btn btn-primary" href="{{=URL(c='client', f='modifier_client', args=[_film.id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger circle" href="{{=URL(c='client', f='supprimer_client', args=[_film.id])}}">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+</div>
+
+
+{{end content}}

@@ -1,0 +1,29 @@
+{{extend 'layout/gestion.html'}}
+{{block content}}
+
+
+<div class="container">
+<br/>
+<h1 class="inline-block margin-right-100">Ajouter un client</h1> 
+<h1 class="inline-block bold-font-a"><a class="btn" href="{{=URL(c='client', f='list_client')}}">Liste des client</a></h1>
+<br/><br/>
+
+{{if message:}}
+<div class="alert alert-success">
+{{=message}}. 
+</div>
+{{pass}}
+
+{{if mode_reservation:}}
+<div class="alert alert-info">
+  <span>En mode de réservation.</span>
+</div>
+{{else:}}
+<div class="alert alert-info">
+  <span>En mode d'ajout Personnel.</span>
+</div>
+{{pass}}
+
+  {{=form}}
+</div>
+{{end content}}

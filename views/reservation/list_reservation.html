@@ -1,0 +1,53 @@
+{{extend 'layout/gestion.html'}}
+{{block content}}
+
+  <div  class="container">
+    <br/>
+    <h1 class="inline-block margin-right-100">List des réservations</h1> 
+    <h1 class="inline-block bold-font-a"><a class="btn" href="{{=URL(c='reservation', f='ajout_reservation')}}">Ajouter des réservations</a></h1>
+    <br/><br/>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom Prénom du réservant</th>
+            <th scope="col">Nombre de place(s)</th>
+            <th scope="col">Numéro de l'affiche</th>
+            <th scope="col">Image du film réservé</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for _place in rows:}}
+        
+        <tr>
+            <th scope="row">{{=_place.id}}</th>
+            <th>{{ if _place.client_id != None :}}
+                {{=_place.client_id.nom}} {{=_place.client_id.prenom}}
+                {{else:}}Nom ou prénom non mentionné{{pass}}
+            </th>
+            <th>{{if _place.nombre_plat :}}{{=_place.nombre_plat}}{{else:}}1{{pass}}</th>
+            <th>{{if _place.plat_id != None :}}{{=_place.plat_id.nom}}{{else:}}Affiche non mentionnée{{pass}}</th>
+            <th>{{if _place.plat_id != None :}}
+                <img src="{{=URL(c='default', f='download', args=[_place.plat_id.image])}}" width="70" height="50" />
+                {{else:}}Affiche non mentionnée{{pass}}
+            </th>
+            <td>
+                <a class="btn btn-primary" href="{{=URL(c='reservation', f='modifier_reservation', args=[_place.id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger circle" href="{{=URL(c='reservation', f='supprimer_reservation', args=[_place.id])}}">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+</div>
+{{end content}}

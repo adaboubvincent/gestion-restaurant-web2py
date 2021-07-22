@@ -1,0 +1,51 @@
+{{extend 'layout/gestion.html'}}
+{{block content}}
+
+<div class="container">
+
+<br/>
+<h1 class="inline-block margin-right-100">Liste des articles enrégistrés</h1> 
+<h1 class="inline-block bold-font-a"><a class="btn" href="{{=URL(c='plat', f='ajout_plat')}}">Ajouter des articles</a></h1>
+<br/><br/>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Image</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Description</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for _film in rows:}}
+        
+        <tr>
+            <th scope="row">{{=_film.id}}</th>
+            <th><img src="{{=URL(c='default', f='download', args=[_film.image])}}" width="70" height="50" /></th>
+            <th>{{=_film.nom}}</th>
+            <th>{{=_film.prix}}</th>
+            <th>{{=_film.nombre}}</th>
+            <td>{{=_film.description}}</td>
+            <td>
+                <a class="btn btn-primary" href="{{=URL(c='plat', f='modifier_plat', args=[_film.id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger circle" href="{{=URL(c='plat', f='supprimer_plat', args=[_film.id])}}">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+</div>
+
+
+{{end content}}

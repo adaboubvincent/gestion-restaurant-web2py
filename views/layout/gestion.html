@@ -1,0 +1,27 @@
+{{extend 'layout.html'}}
+
+{{block body}}
+<!--wrap-content-->
+<div id="wrap-body">
+    <nav class="navBar">
+        <ul>
+          <li><a href="">Accueil</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Découvrir</a></li>
+          <li><a href="">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+<nav class="navBar001">
+    <ul>
+      <li><a style="color: black;" href="{{=URL(c='ouverte_fermante', f='ajout_ouverte_fermante')}}">Ouverte/Fermante</a></li>
+      <li><a style="color: black;"href="{{=URL(c='categorie', f='ajout_categorie')}}">Categorie</a></li>
+      <li><a style="color: black;" href="{{=URL(c='plat', f='ajout_plat')}}">Plat</a></li>
+      <li><a style="color: black;" href="{{=URL(c='client', f='ajout_client')}}">Client</a></li>
+      <li><a style="color: black;" href="{{=URL(c='reservation', f='list_reservation')}}">reservation</a></li>
+      <li><a style="color: black;" href="{{=URL(c='avis', f='list_avis')}}">avis</a></li>
+    </ul>
+</nav>
+{{block content}}{{end}}
+<div style="height: 100px !important;"></div>
+{{end}}

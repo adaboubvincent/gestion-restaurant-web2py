@@ -1,0 +1,219 @@
+{{extend 'layout.html'}}
+
+{{block body}}
+<!--wrap-content-->
+<div id="wrap-body">
+  <!--slideshow-->
+  <div class="heading-group slideshow color-w">
+    <h1>Bienvenu chez nous<span>Restaurant</span></h1>
+    <h3>BREAKFAST / CAFE / DESSERT / FAST FOOD / DINNER / EVENT</h3>
+    <div class="star-group">
+      <i class="fa fa-star-o"></i>
+      <i class="fa fa-star-o star-1x"></i>
+      <i class="fa fa-star-o"></i>
+    </div>
+    <h1>
+      {{ if ouverte_fermante != None :}}
+        Ouvert de {{=ouverte_fermante.heure_ouverte}} à {{=ouverte_fermante.heure_fermante}}
+      {{else:}}
+        Heures d'ouverture et fermeture non déterminées
+      {{pass}}
+    </h1>
+    <a class="btn btn-1" href="#">Lire plus</a>
+  </div>
+  <!--/slideshow-->
+  <div class="container" id="main-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-8">
+        <!--welcome-->
+        <div class="mod-welcome">
+          <div class="title">Mfood<h3>Restaurant</h3></div>
+          <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Lorem ipsum dolor sit amet conse ctetur adipisicing elit
+            <a class="readmore" href="#">Lire plus</a>
+          </p>
+        </div>
+        <!--/welcome-->
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <!--reservation btn-->
+        <div class="reservation-btn">
+          <a href="#nosplat">
+            réservation
+          </a>
+        </div>
+        <!--/reservation btn-->
+      </div>
+    </div>
+    <!--ad-->
+    <div class="ad">
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+          <div class="ad-item bg-1">
+            <h3>Spcial offer -  Off 50%</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, commodi 
+              <a class="readmore" href="#">Lire plus</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <div class="ad-item bg-2">
+            <h3>Hot deal - Free</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, commodi 
+              <a class="readmore" href="#">Lire plus</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ad-->
+<!--     <div class="row">
+      <div class="col-xs-12 col-sm-5 col-md-4">
+        <div class="mn-category color-w">
+          <div class="mn-category-inner">
+            <div class="title"><h3>Our menu</h3></div>
+            <ul class="list-ul">
+              <li><a href="menu.html">01. Pizza Mexicana</a><span>$10</span></li>
+              <li><a href="menu.html">02. Fresh Juices</a><span>$46</span></li>
+              <li><a href="menu.html">03. Chicken Mojamo</a><span>$19</span></li>
+              <li><a href="menu.html">04. Zoozoo Chicken</a><span>$30</span></li>
+              <li><a href="menu.html">05. Lasagna Mermer</a><span>$23</span></li>
+              <li><a href="menu.html">06. Garbo Chicken</a><span>$21</span></li>
+              <li><a href="menu.html">07. Beef Mirchi</a><span>$22</span></li>
+              <li><a href="menu.html">08. Barbique Delite</a><span>$47</span></li>
+              <li><a href="menu.html">09. Rabit Rost</a><span>$42</span></li>
+              <li><a href="menu.html">10. Rabit Rost</a><span>$42</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7 col-md-8">
+        <div class="gallery-1">
+          <div class="row">
+            <div class="gallery-item col-xs-6 col-sm-6 col-md-6">
+              <a href="#" class="hover-img n1">
+                <img src="images/thumbs-large/3.jpg" alt="image">
+                <div class="hover-caption color-w"><h3>Salads / $35</h3></div>
+              </a>
+            </div>
+            <div class="gallery-item col-xs-6 col-sm-6 col-md-6">
+              <a href="#" class="hover-img n2">
+                <img src="images/thumbs-large/82.jpg" alt="image">
+                <div class="hover-caption color-w"><h3>Salads / $22</h3></div>
+              </a>
+            </div>
+            <div class="gallery-item col-xs-6 col-sm-6 col-md-6">
+              <a href="#" class="hover-img n2">
+                <img src="images/thumbs-large/81.jpg" alt="image">
+                <div class="hover-caption color-w"><h3>Salads / $18</h3></div>
+              </a>
+            </div>
+            <div class="gallery-item col-xs-12 col-sm-12 col-md-12">
+              <a href="#" class="hover-img n2">
+                <img src="images/thumbs-large/5.jpg" alt="image">
+                <div class="hover-caption color-w"><h3>Salads / $98</h3></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!--populer-->
+    <div class="product most-popular">
+      <span id="nosplat"></span>
+      <div class="title">Nos<h3>Plats</h3></div>
+      <div class="row">
+        <div class="owl" data-items="4" data-itemsDesktop="4" data-itemsDesktopSmall="3" data-itemsTablet="2" data-itemsMobile="1">
+          {{for _film in rows:}}
+          <div class="col-lg-12">
+            <div class="thumbnail">
+              <a href="{{=URL(c='default', f='download', args=[_film.image])}}" class="hover-img image-zoom">
+                <img src="{{=URL(c='default', f='download', args=[_film.image])}}" alt="image">
+                <div class="hover-caption color-w"><i class="fa fa-search-plus"></i></div>
+              </a>
+              <div class="caption">
+                <h4><a href="fdetail.html">{{=_film.nom}}</a></h4>
+                <p class="price">{{=_film.prix}}CFA</p>
+                <p>{{=_film.description}}</p>
+                <p>
+                  <div class="inline-block">
+                    <form enctype="multipart/form-data" class="inline-block"
+                        action="{{=URL(c='client', f='ajout_client')}}" method="post">
+                        <input type="hidden" value="{{=_film.id}}" name="affiche_id" />
+                    <input type="submit" class="btn btn-success" value="Réserver" />
+                    </form>
+                </div>
+                <div class="inline-block">
+                  <form enctype="multipart/form-data" class="inline-block"
+                      action="{{=URL(c='avis', f='ajout_avis')}}" method="post">
+                      <input type="hidden" value="{{=_film.id}}" name="affiche_id" />
+                  <input type="submit" class="btn btn-primary" value="Avis sur" />
+                  </form>
+              </div>
+                </p>
+              </div>
+            </div>
+          </div>
+          {{pass}}
+          
+        </div>
+      </div>
+    </div>
+    <!--testimonial-->
+    <div class="heading-group testimonial color-w">
+      <h2>PROPRIETAIRE</h2>
+        <div class="star-group">
+          <i class="fa fa-star-o"></i>
+          <i class="fa fa-star-o star-1x"></i>
+          <i class="fa fa-star-o"></i>
+        </div>
+      <div class="owl" data-items="1" data-itemsDesktop="1" data-itemsDesktopSmall="1" data-itemsTablet="1" data-itemsMobile="1">
+        <div class="testimonial-item">
+          <figure class="testimonial-img"><img src="{{=URL('static','images/Vincent1.jpg')}}" alt="image"></figure>
+          <h4>- Adabounou Kodjovi Vincent -</h4>
+          <p>" Etant développeur logiciel, je suis passion par la réactivité et le développements des logiciels."</p>
+        </div>
+        <div class="testimonial-item">
+          <figure class="testimonial-img"><img src="{{=URL('static','images/Vincent1.jpg')}}" alt="image"></figure>
+          <h4>- Adabounou Kodjovi Vincent -</h4>
+          <p>" Etant développeur logiciel, je suis passion par la réactivité et le développements des logiciels."</p>
+        </div>
+        <div class="testimonial-item">
+          <figure class="testimonial-img"><img src="{{=URL('static','images/Vincent1.jpg')}}" alt="image"></figure>
+          <h4>- Adabounou Kodjovi Vincent -</h4>
+          <p>" Etant développeur logiciel, je suis passion par la réactivité et le développements des logiciels."</p>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- newsletter-->
+    <div class="newsletter">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="title"><h3>BULLETIN</h3></div>
+        </div>
+        <div class="col-lg-9">
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="text" class="form-control form-item"  name="name" placeholder="Votre nom">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control form-item" name="email" placeholder="Email@example.com">
+            </div>
+            <button type="submit" name="submit" class="btn btn-1">Souscrire</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--/newsletter-->
+  </div>
+</div>
+
+<!--wrap-content-->
+{{end}}
+
+
+
+
+

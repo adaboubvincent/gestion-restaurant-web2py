@@ -1,0 +1,46 @@
+{{extend 'layout/gestion.html'}}
+{{block content}}
+
+
+<div class="container">
+
+<br/>
+<h1 class="inline-block margin-right-100">Liste des ouverte/fermante enrégistrés</h1> 
+<h1 class="inline-block bold-font-a"><a class="btn" href="{{=URL(c='ouverte_fermante', f='ajout_ouverte_fermante')}}">Ajouter des ouverte/fermante</a></h1>
+<br/><br/>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Heure à ouvrir</th>
+            <th scope="col">Heure à fermer</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for _film in rows:}}
+        
+        <tr>
+            <th scope="row">{{=_film.id}}</th>
+            <th>{{=_film.heure_ouverte}}</th>
+            <td>{{=_film.heure_fermante}}</td>
+            <td>
+                <a class="btn btn-primary" href="{{=URL(c='ouverte_fermante', f='modifier_ouverte_fermante', args=[_film.id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger circle" href="{{=URL(c='ouverte_fermante', f='supprimer_ouverte_fermante', args=[_film.id])}}">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+</div>
+
+
+{{end content}}

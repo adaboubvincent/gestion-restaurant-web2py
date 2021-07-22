@@ -1,0 +1,110 @@
+timestamp: 2021-07-08T13:55:17.047585
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(128),
+    "last_name" CHAR(128),
+    "email" CHAR(512),
+    "password" CHAR(512),
+    "registration_key" CHAR(512),
+    "reset_password_key" CHAR(512),
+    "registration_id" CHAR(512)
+);
+success!
+timestamp: 2021-07-08T13:55:17.294581
+CREATE TABLE "auth_group"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "role" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2021-07-08T13:55:17.429955
+CREATE TABLE "auth_membership"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-07-08T13:55:17.544451
+CREATE TABLE "auth_permission"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
+    "name" CHAR(512),
+    "table_name" CHAR(512),
+    "record_id" INTEGER
+);
+success!
+timestamp: 2021-07-08T13:55:17.669690
+CREATE TABLE "auth_event"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "time_stamp" TIMESTAMP,
+    "client_ip" CHAR(512),
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "origin" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2021-07-08T13:55:17.797173
+CREATE TABLE "auth_cas"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "created_on" TIMESTAMP,
+    "service" CHAR(512),
+    "ticket" CHAR(512),
+    "renew" CHAR(1)
+);
+success!
+timestamp: 2021-07-08T15:03:39.632048
+CREATE TABLE "ouverte_fermante"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "heure_ouverte" TIME,
+    "heure_fermante" TIME
+);
+success!
+timestamp: 2021-07-08T15:03:39.796383
+CREATE TABLE "categorie"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nom" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2021-07-08T15:03:39.887690
+CREATE TABLE "plat"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nom" CHAR(512),
+    "prix" DOUBLE,
+    "nombre" INTEGER,
+    "description" TEXT
+);
+success!
+timestamp: 2021-07-08T15:03:39.992446
+CREATE TABLE "client"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nom" CHAR(512),
+    "prenom" CHAR(512)
+);
+success!
+timestamp: 2021-07-08T15:03:40.118164
+CREATE TABLE "reservation"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "plat_id" INTEGER REFERENCES "plat" ("id") ON DELETE CASCADE  ,
+    "client_id" INTEGER REFERENCES "client" ("id") ON DELETE CASCADE  ,
+    "nombre_plat" INTEGER
+);
+success!
+timestamp: 2021-07-08T15:03:40.220165
+CREATE TABLE "avis"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "plat_id" INTEGER REFERENCES "plat" ("id") ON DELETE CASCADE  ,
+    "client_id" INTEGER REFERENCES "client" ("id") ON DELETE CASCADE  ,
+    "description" TEXT
+);
+success!
+timestamp: 2021-07-08T16:14:10.473009
+ALTER TABLE "plat" ADD "image" CHAR(512);
+success!
+timestamp: 2021-07-08T18:23:33.610437
+ALTER TABLE "avis" ADD "objet" CHAR(512);
+success!
+timestamp: 2021-07-08T18:58:07.181588
+ALTER TABLE "plat" ADD "categorie_id" INTEGER REFERENCES "categorie" ("id") ON DELETE CASCADE  ;
+success!

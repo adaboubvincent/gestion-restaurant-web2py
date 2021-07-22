@@ -1,0 +1,79 @@
+{{extend 'layout.html'}}
+{{block body}}
+
+<div id="wrap-body">
+    <!--banner-->
+    <div class="heading-group page-name color-w">
+        <h1>Contact</h1>
+        <ul class="becku">
+            <li><a href="#">Home</a></li>
+            <li>Contact</li>
+        </ul>
+        <div class="star-group">
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o star-1x"></i>
+            <i class="fa fa-star-o"></i>
+        </div>
+    </div>
+    <!-- /banner-->
+    <div class="container" id="main-content">
+        <div class="row">
+            <div class="col-md-6">
+                <!--contact-->
+                <div class="contact">
+                    <div class="addr">
+                        <div class="title">Contact<h3>info</h3></div>
+                        <p>Notre famille est dans la restauration depuis très longtemps. De nos jours, nous pouvons fièrement vanter notre réputation de restaurant italien bien connu dans notre région..&nbsp;</p>
+                        <ul class="list-ul">
+                            <li><i class="fa fa-home"></i>20 Rue de l'Espérance, Lomé</li>
+                            <li><i class="fa fa-phone"></i>+880 1973 833 508</li>
+                            <li><i class="fa fa-envelope"></i>ndktheme@gmail.com</li>
+                        </ul>
+                    </div>
+                    <form>
+                        <div class="title">Contact<h3>form</h3></div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-item" name="nom" placeholder="Nom">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-item" name="telephone" placeholder="Téléphone">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-item" name="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control form-item" rows="3" name="contenu" placeholder="Contenu"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-1">Envyer</button>
+                    </form>
+                </div>
+                <!--/contact-->
+            </div>
+            <div class="col-md-6">
+                <!--googlemap-->
+                <div id="googlemap"></div>
+            </div>
+        </div>
+        <!--newsletter-->
+        <div class="newsletter">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="title"><h3>BULLETIN</h3></div>
+                  </div>
+                  <div class="col-lg-9">
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <input type="text" class="form-control form-item"  name="name" placeholder="Votre nom">
+                      </div>
+                      <div class="form-group">
+                        <input type="email" class="form-control form-item" name="email" placeholder="Email@example.com">
+                      </div>
+                      <button type="submit" name="submit" class="btn btn-1">Souscrire</button>
+                    </form>
+                  </div>
+            </div>
+        </div>
+        <!--/newsletter-->
+    </div>
+</div>
+{{end content}}

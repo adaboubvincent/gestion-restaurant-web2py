@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html
+  
+>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>mfood</title>
+  <link rel="icon" href="favicon.ico">
+  <!--owl carousel-->
+  <link rel="stylesheet" type="text/css" href="{{=URL('static','css/owl-coursel/owl.carousel.css')}}" media="screen"/>
+  <link rel="stylesheet" type="text/css" href="{{=URL('static','css/owl-coursel/owl.theme.css')}}" media="screen"/>
+  <!--magnific popup-->
+  <link rel="stylesheet" type="text/css" href="{{=URL('static','css/magnific-popup/magnific-popup.css')}}" media="screen"/>
+  <!--bootstrap-->
+  <link rel="stylesheet" type="text/css" href="{{=URL('static','css/bootstrap.min.css')}}" media="screen"/>
+  <!--awesome font icons-->
+  <link rel="stylesheet" type="text/css" href="{{=URL('static','css/font-awesome.min.css')}}" media="screen"/>
+  <!--style-->
+  <link rel="stylesheet" type="text/css" href="{{=URL('static','css/style.css')}}" media="screen"/>
+  <!--google font-->
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+  <link
+  rel="stylesheet"
+  href="{{=URL('static','my-style.css') }}"
+/>
+
+
+<style>
+  .navBar ul li a {
+    color: white !important;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .navBar ul li {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .navBar001 ul li a {
+    color: black !important;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .navBar001 ul li {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+</style>
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <!-- preloader-->
+    <div class="preloader"><p></p></div>
+    <!-- header-->
+			<header id="wrap-header">
+				<div class="container">
+					<!--menu + logo-->
+					<!-- <nav class="navbar">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a href="#" class="navbar-brand logo">
+									<img src="{{=URL('static','images/logo.png') }}" alt="image" width="150">
+								</a>
+							</div>
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+								<ul class="nav navbar-nav">
+									<li><a class="active" href="index.html" style="color: white;">Home</a></li>
+									<li><a href="about.html">About</a></li>
+									<li><a href="menu.html">Menu</a></li>
+									<li><a href="reservation.html">Reservation</a></li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+										<ul class="dropdown-menu">
+											<li><a href="blog.html">Blog</a></li>
+											<li><a href="blogdetail.html">Blog single</a></li>
+											<li><a href="error_404.html">Error_404</a></li>
+										</ul>
+									</li>
+									<li><a href="contact.html">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+					</nav>	 -->
+          <nav class="navBar">
+            <ul>
+              <li><a href="{{=URL(c='default', f='index')}}">Accueil</a></li>
+              {{if auth.user:}}<li><a href="{{=URL(c='categorie', f='ajout_categorie')}}">Gestion</a></li>{{pass}}
+              <li><a href="{{=URL(c='default', f='contact')}}">Contact</a></li>
+              <li><a {{if auth.user:}}href="{{=URL('default','user/logout')}}"{{else:}}href="{{=URL('default','user/login')}}"{{pass}}>
+                {{if auth.user:}}{{=auth.user.first_name}}->Déconnecter{{else:}}LOGIN{{pass}}
+              </a></li>
+              
+              <!-- <li class="dropdown">
+                {{if 'auth' in globals():}}
+  
+                <ul>
+                  <li>
+                    <a
+                      href="#"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}
+                    </a>
+  
+                    <div class="dropdown-menu dropdown-menu-right">
+                      {{if auth.user:}}
+  
+                      <a
+                        class="dropdown-item"
+                        href="{{=URL('default','user/profile')}}"
+                      >{{=T('Profile')}}</a>
+  
+                      {{if 'change_password' not in auth.settings.actions_disabled:}}
+  
+                      <a
+                        class="dropdown-item"
+                        href="{{=URL('default','user/change_password')}}"
+                      >{{=T('Change Password')}}</a>
+  
+                      {{pass}}
+  
+                      <a
+                        class="dropdown-item"
+                        href="{{=URL('default','user/logout')}}"
+                      >{{=T('Logout')}}</a>
+  
+                      {{else:}}
+  
+                      <a
+                        class="dropdown-item"
+                        href="{{=URL('default','user/login')}}"
+                      >{{=T('Login')}}</a>
+  
+                      {{if 'register' not in auth.settings.actions_disabled:}}
+  
+                      <a
+                        class="dropdown-item"
+                        href="{{=URL('default','user/register')}}"
+                      >{{=T('Sign up')}}</a>
+  
+                      {{pass}}
+                {{if 'retrieve_password' not in auth.settings.actions_disabled:}}
+  
+                      <a
+                        class="dropdown-item"
+                        href="{{=URL('default','user/retrieve_password')}}"
+                      >{{=T('Lost Password')}}</a>
+  
+                      {{pass}}
+                {{pass}}
+                    </div>
+                  </li>
+                </ul>
+  
+                {{pass}}
+              </li> -->
+            </ul>
+          </nav>
+				</div>	
+			</header>
+			<!--/header-->
+
+    <!-- Masthead ===================================== -->
+    {{block header}}
+    {{end}}
+
+    <!-- Main ========================================= -->
+    <!-- Begin page content -->
+    <!-- class="container-fluid main-container" -->
+
+    <div>
+      {{include}}
+      {{=response.toolbar() if response.show_toolbar else ''}}
+    </div>
+
+
+
+
+
+    {{block footer}}
+
+    <!-- this is default footer -->
+
+ <!-- footer -->
+ <footer id="wrap-footer" class="color-w">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <a href="#" class="logo">
+            <img src="{{=URL('static','images/logo.png')}}" alt="image">
+          </a>
+          <ul>
+            <li>Add<span class="pull-right">300 E-Block Building, Malaysia</span></li>
+            <li>Phone<span class="pull-right">+880 1973 833 508</span></li>
+            <li>Email<span class="pull-right">ndktheme@gmail.com</span></li>
+            <li>Website<span class="pull-right">http://www.ndktheme.com</span></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h4>Opening hour</h4>
+          <ul>
+            <li>Monday<span class="pull-right">8:00 Am - 22:00 Pm</span></li>
+            <li>Tuesday<span class="pull-right">8:00 Am - 22:00 Pm</span></li>
+            <li>Wednesday<span class="pull-right">8:00 Am - 22:00 Pm</span></li>
+            <li>Thursday<span class="pull-right">8:00 Am - 22:00 Pm</span></li>
+            <li>Friday<span class="pull-right">8:00 Am - 22:00 Pm</span></li>
+            <li>Saturday<span class="pull-right">10:00 Am - 23:00 Pm</span></li>
+            <li>Sunday<span class="pull-right">Closed</span></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h4>Gallery</h4>
+          <ul class="gallery-2">
+            <li class="gallery-item">
+              <a href="{{=URL('static','images/2.jpg')}}" class="hover-img image-zoom">
+                <img src="{{=URL('static','images/2.jpg')}}" alt="image">
+                <div class="hover-caption color-w"><i class="fa fa-search-plus"></i></div>
+              </a>
+            </li>
+            <li class="gallery-item">
+              <a href="{{=URL('static','images/4.jpg')}}" class="hover-img image-zoom">
+                <img src="{{=URL('static','images/4.jpg')}}" alt="image">
+                <div class="hover-caption color-w"><i class="fa fa-search-plus"></i></div>
+              </a>
+            </li>
+            <li class="gallery-item">
+              <a href="{{=URL('static','images/5.jpg')}}" class="hover-img image-zoom">
+                <img src="{{=URL('static','images/5.jpg')}}" alt="image">
+                <div class="hover-caption color-w"><i class="fa fa-search-plus"></i></div>
+              </a>
+            </li>
+            <li class="gallery-item">
+              <a href="{{=URL('static','images/6.jpg')}}" class="hover-img image-zoom">
+                <img src="{{=URL('static','images/6.jpg')}}" alt="image">
+                <div class="hover-caption color-w"><i class="fa fa-search-plus"></i></div>
+              </a>
+            </li>
+            <li class="gallery-item">
+              <a href="{{=URL('static','images/7.jpg')}}" class="hover-img image-zoom">
+                <img src="{{=URL('static','images/7.jpg')}}" alt="image">
+                <div class="hover-caption color-w"><i class="fa fa-search-plus"></i></div>
+              </a>
+            </li>
+            <li class="gallery-item">
+              <a href="{{=URL('static','images/8.jpg')}}" class="hover-img image-zoom">
+                <img src="{{=URL('static','images/8.jpg')}}" alt="image">
+                <div class="hover-caption color-w"><i class="fa fa-search-plus"></i></div>
+              </a>
+            </li>
+            <li class="gallery-item">
+              <a href="{{=URL('static','images/9.jpg')}}" class="hover-img image-zoom">
+                <img src="{{=URL('static','images/9.jpg')}}" alt="image">
+                <div class="hover-caption color-w"><i class="fa fa-search-plus"></i></div>
+              </a>
+            </li>
+            <li class="gallery-item">
+              <a href="{{=URL('static','images/9.jpg')}}" class="hover-img image-zoom">
+                <img src="{{=URL('static','images/9.jpg')}}" alt="image">
+                <div class="hover-caption color-w"><i class="fa fa-search-plus"></i></div>
+              </a>
+            </li>
+            <li class="gallery-item">
+              <a href="{{=URL('static','images/9.jpg')}}" class="hover-img image-zoom">
+                <img src="{{=URL('static','images/9.jpg')}}" alt="image">
+                <div class="hover-caption color-w"><i class="fa fa-search-plus"></i></div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h4>Flow us on</h4>
+          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ant</p>
+          <ul class="list-inline social-default social-bg-gray">
+            <li><a href="#" class="fa fa-facebook"></a></li>
+            <li><a href="#" class="fa fa-google-plus"></a></li>
+            <li><a href="#" class="fa fa-twitter"></a></li>
+            <li><a href="#" class="fa fa-youtube-play"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>Designed by <a href="#">ndktheme</a>. All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+<!--/footer-->
+
+    {{end}}
+  </div>
+
+  <!-- <script src="{{=URL('static','js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{=URL('static','js/web2py-bootstrap4.js')}}"></script>
+  {{block page_js}}{{end page_js}}
+    {{if response.google_analytics_id:}}
+
+    
+  <script src="{{=URL('static','js/analytics.min.js')}}"></script>
+
+  <script type="text/javascript">
+    analytics.initialize({
+      'Google Analytics':{trackingId:'{{=response.google_analytics_id}}'}
+      });
+  </script>
+
+  {{pass}} -->
+  <script src="{{=URL('static','js/jquery-2.2.4.min.js')}}"></script>
+  <!--bootstrap-->
+  <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
+  <!--owl carousel-->
+  <script src="{{=URL('static','js/owl-coursel/owl.carousel.js')}}"></script>
+  <!--magnific popup-->
+  <script src="{{=URL('static','js/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+  <!--script-->
+  <script src="{{=URL('static','js/script.js')}}"></script>
+</body>
+</html>
+
+<!-- 
+  <li class="dropdown">
+              {{if 'auth' in globals():}}
+
+              <ul>
+                <li>
+                  <a
+                    href="#"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}
+                  </a>
+
+                  <div class="dropdown-menu dropdown-menu-right">
+                    {{if auth.user:}}
+
+                    <a
+                      class="dropdown-item"
+                      href="{{=URL('default','user/profile')}}"
+                    >{{=T('Profile')}}</a>
+
+                    {{if 'change_password' not in auth.settings.actions_disabled:}}
+
+                    <a
+                      class="dropdown-item"
+                      href="{{=URL('default','user/change_password')}}"
+                    >{{=T('Change Password')}}</a>
+
+                    {{pass}}
+
+                    <a
+                      class="dropdown-item"
+                      href="{{=URL('default','user/logout')}}"
+                    >{{=T('Logout')}}</a>
+
+                    {{else:}}
+
+                    <a
+                      class="dropdown-item"
+                      href="{{=URL('default','user/login')}}"
+                    >{{=T('Login')}}</a>
+
+                    {{if 'register' not in auth.settings.actions_disabled:}}
+
+                    <a
+                      class="dropdown-item"
+                      href="{{=URL('default','user/register')}}"
+                    >{{=T('Sign up')}}</a>
+
+                    {{pass}}
+              {{if 'retrieve_password' not in auth.settings.actions_disabled:}}
+
+                    <a
+                      class="dropdown-item"
+                      href="{{=URL('default','user/retrieve_password')}}"
+                    >{{=T('Lost Password')}}</a>
+
+                    {{pass}}
+              {{pass}}
+                  </div>
+                </li>
+              </ul>
+
+              {{pass}}
+            </li>
+ -->

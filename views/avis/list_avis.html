@@ -1,0 +1,61 @@
+{{extend 'layout/gestion.html'}}
+{{block content}}
+
+<div class="container">
+
+<br/>
+<h1 class="inline-block margin-right-100">Liste des Films enrégistrés</h1> 
+<h1 class="inline-block bold-font-a"><a class="btn" href="{{=URL(c='avis', f='ajout_avis')}}">Ajouter des avis</a></h1>
+<br/><br/>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom Prénom de l'envoyeur</th>
+            <th scope="col">Article</th>
+            <th scope="col">Objet</th>
+            <th scope="col">Description</th>
+            <th scope="col" colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for _film in rows:}}
+        
+        <tr>
+            <th scope="row">{{=_film.id}}</th>
+            <td>
+                {{ if _film.client_id != None :}}
+                    {{=_film.client_id.nom}} {{=_film.client_id.prenom}}
+                {{else:}}
+                    Personne non trouvée
+                {{pass}}
+            </td>
+            <td>
+                {{ if _film.plat_id != None :}}
+                    {{=_film.plat_id.nom}} : {{=_film.plat_id.prix}}
+                {{else:}}
+                    Article non trouvé
+                {{pass}}
+            </td>
+            <td>{{=_film.objet}}</td>
+            <td>{{=_film.description}}</td>
+            <td>
+                <a class="btn btn-primary" href="{{=URL(c='avis', f='modifier_avis', args=[_film.id])}}">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger circle" href="{{=URL(c='avis', f='supprimer_avis', args=[_film.id])}}">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+</div>
+
+
+{{end content}}
